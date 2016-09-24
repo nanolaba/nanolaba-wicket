@@ -11,8 +11,6 @@ import java.io.Serializable;
 
 public class FTab<T extends WebMarkupContainer> extends AbstractTab {
 
-    private static final long serialVersionUID = 8756341950760250757L;
-
     private final PanelSupplier<T> panelSupplier;
     private final SerializableBooleanSupplier visibilityFunction;
 

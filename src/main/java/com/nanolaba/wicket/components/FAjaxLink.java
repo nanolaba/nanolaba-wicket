@@ -8,8 +8,6 @@ import org.apache.wicket.model.IModel;
 
 public class FAjaxLink<T> extends AjaxLink<T> {
 
-    private static final long serialVersionUID = 166504194001783109L;
-
     private final AjaxAction action;
 
     public FAjaxLink(String id, AjaxAction action) {

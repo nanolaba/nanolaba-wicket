@@ -7,8 +7,6 @@ import org.apache.wicket.model.IModel;
 
 public class FForm extends Form {
 
-    private static final long serialVersionUID = 4078344864715682597L;
-
     private final Action action;
 
     public FForm(String id, Action action) {

@@ -7,8 +7,6 @@ import org.apache.wicket.model.IModel;
 
 public class FLink<T> extends Link<T> {
 
-    private static final long serialVersionUID = -6838204752028259112L;
-
     private final Action action;
 
     public FLink(String id, Action action) {

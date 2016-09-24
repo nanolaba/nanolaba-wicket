@@ -8,8 +8,6 @@ import org.apache.wicket.model.IModel;
 
 public class FSubmitLink extends SubmitLink {
 
-    private static final long serialVersionUID = 6599469691030810179L;
-
     private final Action action;
 
     public FSubmitLink(String id, Action action) {

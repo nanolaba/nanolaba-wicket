@@ -6,8 +6,6 @@ import org.apache.wicket.model.IModel;
 
 public class FContainer extends WebMarkupContainer {
 
-    private static final long serialVersionUID = 4352939921616009887L;
-
     private final SerializableBooleanSupplier visibilityFunction;
 
     public FContainer(String id, SerializableBooleanSupplier visibilityFunction, boolean renderBodyOnly) {
