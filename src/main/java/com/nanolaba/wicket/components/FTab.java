@@ -12,24 +12,20 @@ import java.io.Serializable;
 public class FTab<T extends WebMarkupContainer> extends AbstractTab {
 
     private final PanelSupplier<T> panelSupplier;
-    private final SerializableBooleanSupplier visibilityFunction;
+    private SerializableBooleanSupplier visibilityFunction;
 
     public FTab(String title, PanelSupplier<T> panelSupplier) {
         this(Model.of(title), panelSupplier);
     }
 
-    public FTab(String title, PanelSupplier<T> panelSupplier, SerializableBooleanSupplier visibilityFunction) {
-        this(Model.of(title), panelSupplier, visibilityFunction);
-    }
-
     public FTab(IModel<String> title, PanelSupplier<T> panelSupplier) {
-        this(title, panelSupplier, null);
-    }
-
-    public FTab(IModel<String> title, PanelSupplier<T> panelSupplier, SerializableBooleanSupplier visibilityFunction) {
         super(title);
         this.panelSupplier = panelSupplier;
+    }
+
+    public FTab<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
+        return this;
     }
 
     @Override

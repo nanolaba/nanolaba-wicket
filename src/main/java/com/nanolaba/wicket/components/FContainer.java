@@ -29,6 +29,5 @@ public class FContainer extends WebMarkupContainer {
     @Override
     protected void onConfigure() {
         setVisible(visibilityFunction.getAsBoolean());
-        super.onConfigure();
     }
 }

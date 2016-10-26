@@ -1,37 +1,51 @@
 package com.nanolaba.wicket.components;
 
 import com.nanolaba.wicket.interfaces.FormAjaxAction;
+import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.form.Form;
 
 public class FAjaxSubmitLink extends AjaxSubmitLink {
 
-    private final FormAjaxAction submitAction;
-    private final FormAjaxAction afterSubmitAction;
-    private final FormAjaxAction errorAction;
+    private FormAjaxAction submitAction;
+    private FormAjaxAction afterSubmitAction;
+    private FormAjaxAction errorAction;
+    private SerializableBooleanSupplier visibilityFunction;
 
-    public static FAjaxSubmitLink onSubmit(String id, FormAjaxAction submitAction) {
-        return new FAjaxSubmitLink(id, submitAction, null, null);
+    public FAjaxSubmitLink(String id) {
+        super(id);
     }
 
-    public static FAjaxSubmitLink onAfterSubmit(String id, FormAjaxAction afterSubmitAction) {
-        return new FAjaxSubmitLink(id, null, afterSubmitAction, null);
-    }
-
-    public static FAjaxSubmitLink onError(String id, FormAjaxAction errorAction) {
-        return new FAjaxSubmitLink(id, null, null, errorAction);
-    }
-
-    public FAjaxSubmitLink(String id, FormAjaxAction submitAction, FormAjaxAction afterSubmitAction, FormAjaxAction errorAction) {
-        this(id, null, submitAction, afterSubmitAction, errorAction);
-    }
-
-    public FAjaxSubmitLink(String id, Form<?> form, FormAjaxAction submitAction, FormAjaxAction afterSubmitAction, FormAjaxAction errorAction) {
+    public FAjaxSubmitLink(String id, Form<?> form) {
         super(id, form);
+    }
+
+    public FAjaxSubmitLink onSubmit(FormAjaxAction submitAction) {
         this.submitAction = submitAction;
+        return this;
+    }
+
+    public FAjaxSubmitLink onAfterSubmit(FormAjaxAction afterSubmitAction) {
         this.afterSubmitAction = afterSubmitAction;
+        return this;
+    }
+
+    public FAjaxSubmitLink onError(FormAjaxAction errorAction) {
         this.errorAction = errorAction;
+        return this;
+    }
+
+    public FAjaxSubmitLink setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
+        this.visibilityFunction = visibilityFunction;
+        return this;
+    }
+
+    @Override
+    protected void onConfigure() {
+        if (visibilityFunction != null) {
+            setVisible(visibilityFunction.getAsBoolean());
+        }
     }
 
     @Override
