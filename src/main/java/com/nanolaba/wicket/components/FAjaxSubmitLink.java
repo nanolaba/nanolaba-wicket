@@ -21,17 +21,17 @@ public class FAjaxSubmitLink extends AjaxSubmitLink {
         super(id, form);
     }
 
-    public FAjaxSubmitLink onSubmit(FormAjaxAction submitAction) {
+    public FAjaxSubmitLink setSubmitAction(FormAjaxAction submitAction) {
         this.submitAction = submitAction;
         return this;
     }
 
-    public FAjaxSubmitLink onAfterSubmit(FormAjaxAction afterSubmitAction) {
+    public FAjaxSubmitLink setAfterSubmitAction(FormAjaxAction afterSubmitAction) {
         this.afterSubmitAction = afterSubmitAction;
         return this;
     }
 
-    public FAjaxSubmitLink onError(FormAjaxAction errorAction) {
+    public FAjaxSubmitLink setErrorAction(FormAjaxAction errorAction) {
         this.errorAction = errorAction;
         return this;
     }

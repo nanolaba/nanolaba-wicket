@@ -6,7 +6,7 @@ import org.apache.wicket.model.IModel;
 
 public class FContainer extends WebMarkupContainer {
 
-    private final SerializableBooleanSupplier visibilityFunction;
+    private SerializableBooleanSupplier visibilityFunction;
 
     public FContainer(String id, SerializableBooleanSupplier visibilityFunction, boolean renderBodyOnly) {
         this(id, null, visibilityFunction, renderBodyOnly);
@@ -26,8 +26,15 @@ public class FContainer extends WebMarkupContainer {
         setRenderBodyOnly(renderBodyOnly);
     }
 
+    public FContainer setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
+        this.visibilityFunction = visibilityFunction;
+        return this;
+    }
+
     @Override
     protected void onConfigure() {
-        setVisible(visibilityFunction.getAsBoolean());
+        if (visibilityFunction != null) {
+            setVisible(visibilityFunction.getAsBoolean());
+        }
     }
 }

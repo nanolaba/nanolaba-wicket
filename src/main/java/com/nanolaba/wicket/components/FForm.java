@@ -8,22 +8,43 @@ import org.apache.wicket.model.IModel;
 
 public class FForm extends Form {
 
-    private final Action action;
+    private Action submitAction;
+    private Action errorAction;
     private SerializableBooleanSupplier visibilityFunction;
 
-    public FForm(String id, Action action) {
+    public FForm(String id) {
         super(id);
-        this.action = action;
     }
 
-    public FForm(String id, IModel model, Action action) {
+    public FForm(String id, IModel model) {
         super(id, model);
-        this.action = action;
+    }
+
+    public FForm(String id, Action submitAction) {
+        super(id);
+        this.submitAction = submitAction;
     }
 
     public FForm setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;
+    }
+
+    public FForm setSubmitAction(Action submitAction) {
+        this.submitAction = submitAction;
+        return this;
+    }
+
+    public FForm setErrorAction(Action errorAction) {
+        this.errorAction = errorAction;
+        return this;
+    }
+
+    @Override
+    protected void onError() {
+        if (errorAction != null) {
+            errorAction.makeAction();
+        }
     }
 
     @Override
@@ -35,7 +56,8 @@ public class FForm extends Form {
 
     @Override
     protected void onSubmit() {
-        action.makeAction();
-        super.onSubmit();
+        if (submitAction != null) {
+            submitAction.makeAction();
+        }
     }
 }

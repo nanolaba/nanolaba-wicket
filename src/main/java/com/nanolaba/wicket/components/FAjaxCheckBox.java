@@ -8,17 +8,30 @@ import org.apache.wicket.model.IModel;
 
 public class FAjaxCheckBox extends AjaxCheckBox {
 
-    private final AjaxAction action;
+    private AjaxAction updateAction;
     private SerializableBooleanSupplier visibilityFunction;
 
-    public FAjaxCheckBox(String id, AjaxAction action) {
+    public FAjaxCheckBox(String id) {
         super(id);
-        this.action = action;
     }
 
-    public FAjaxCheckBox(String id, IModel<Boolean> model, AjaxAction action) {
+    public FAjaxCheckBox(String id, IModel<Boolean> model) {
         super(id, model);
-        this.action = action;
+    }
+
+    public FAjaxCheckBox(String id, AjaxAction updateAction) {
+        super(id);
+        this.updateAction = updateAction;
+    }
+
+    public FAjaxCheckBox(String id, IModel<Boolean> model, AjaxAction updateAction) {
+        super(id, model);
+        this.updateAction = updateAction;
+    }
+
+    public FAjaxCheckBox setUpdateAction(AjaxAction updateAction) {
+        this.updateAction = updateAction;
+        return this;
     }
 
     public FAjaxCheckBox setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
@@ -35,6 +48,8 @@ public class FAjaxCheckBox extends AjaxCheckBox {
 
     @Override
     protected void onUpdate(AjaxRequestTarget target) {
-        action.makeAction(target);
+        if (updateAction != null) {
+            updateAction.makeAction(target);
+        }
     }
 }

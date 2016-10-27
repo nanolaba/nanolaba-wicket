@@ -8,21 +8,34 @@ import org.apache.wicket.model.IModel;
 
 public class FLink<T> extends Link<T> {
 
-    private final Action action;
+    private Action clickAction;
     private SerializableBooleanSupplier visibilityFunction;
 
-    public FLink(String id, Action action) {
+    public FLink(String id) {
         super(id);
-        this.action = action;
     }
 
-    public FLink(String id, IModel<T> model, Action action) {
+    public FLink(String id, IModel<T> model) {
         super(id, model);
-        this.action = action;
+    }
+
+    public FLink(String id, Action clickAction) {
+        super(id);
+        this.clickAction = clickAction;
+    }
+
+    public FLink(String id, IModel<T> model, Action clickAction) {
+        super(id, model);
+        this.clickAction = clickAction;
     }
 
     public FLink<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
+        return this;
+    }
+
+    public FLink<T> setClickAction(Action clickAction) {
+        this.clickAction = clickAction;
         return this;
     }
 
@@ -35,6 +48,8 @@ public class FLink<T> extends Link<T> {
 
     @Override
     public void onClick() {
-        action.makeAction();
+        if (clickAction != null) {
+            clickAction.makeAction();
+        }
     }
 }

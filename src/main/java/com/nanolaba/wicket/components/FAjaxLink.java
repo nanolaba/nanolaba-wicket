@@ -9,17 +9,30 @@ import org.apache.wicket.model.IModel;
 
 public class FAjaxLink<T> extends AjaxLink<T> {
 
-    private final AjaxAction action;
+    private AjaxAction clickAction;
     private SerializableBooleanSupplier visibilityFunction;
 
-    public FAjaxLink(String id, AjaxAction action) {
+    public FAjaxLink(String id) {
         super(id);
-        this.action = action;
     }
 
-    public FAjaxLink(String id, IModel<T> model, AjaxAction action) {
+    public FAjaxLink(String id, IModel<T> model) {
         super(id, model);
-        this.action = action;
+    }
+
+    public FAjaxLink(String id, AjaxAction clickAction) {
+        super(id);
+        this.clickAction = clickAction;
+    }
+
+    public FAjaxLink(String id, IModel<T> model, AjaxAction clickAction) {
+        super(id, model);
+        this.clickAction = clickAction;
+    }
+
+    public FAjaxLink<T> setClickAction(AjaxAction clickAction) {
+        this.clickAction = clickAction;
+        return this;
     }
 
     public FAjaxLink<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
@@ -36,6 +49,8 @@ public class FAjaxLink<T> extends AjaxLink<T> {
 
     @Override
     public void onClick(AjaxRequestTarget target) {
-        action.makeAction(target);
+        if (clickAction != null) {
+            clickAction.makeAction(target);
+        }
     }
 }

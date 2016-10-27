@@ -15,12 +15,12 @@ public class FEvent extends AjaxFormComponentUpdatingBehavior {
         super(event);
     }
 
-    public FEvent onUpdate(AjaxAction updateAction) {
+    public FEvent setUpdateAction(AjaxAction updateAction) {
         this.updateAction = updateAction;
         return this;
     }
 
-    public FEvent onError(AjaxErrorAction errorAction) {
+    public FEvent setErrorAction(AjaxErrorAction errorAction) {
         this.errorAction = errorAction;
         return this;
     }

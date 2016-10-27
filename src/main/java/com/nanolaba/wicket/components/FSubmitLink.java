@@ -30,17 +30,17 @@ public class FSubmitLink extends SubmitLink {
         super(id, model, form);
     }
 
-    public FSubmitLink onSubmit(Action submitAction) {
+    public FSubmitLink setSubmitAction(Action submitAction) {
         this.submitAction = submitAction;
         return this;
     }
 
-    public FSubmitLink onAfterSubmit(Action afterSubmitAction) {
+    public FSubmitLink setAfterSubmitAction(Action afterSubmitAction) {
         this.afterSubmitAction = afterSubmitAction;
         return this;
     }
 
-    public FSubmitLink onError(Action errorAction) {
+    public FSubmitLink setErrorAction(Action errorAction) {
         this.errorAction = errorAction;
         return this;
     }

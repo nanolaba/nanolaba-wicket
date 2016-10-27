@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class FTab<T extends WebMarkupContainer> extends AbstractTab {
 
-    private final PanelSupplier<T> panelSupplier;
+    private PanelSupplier<T> panelSupplier;
     private SerializableBooleanSupplier visibilityFunction;
 
     public FTab(String title, PanelSupplier<T> panelSupplier) {
@@ -23,6 +23,11 @@ public class FTab<T extends WebMarkupContainer> extends AbstractTab {
         this.panelSupplier = panelSupplier;
     }
 
+    public FTab<T> setPanelSupplier(PanelSupplier<T> panelSupplier) {
+        this.panelSupplier = panelSupplier;
+        return this;
+    }
+
     public FTab<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;
@@ -30,7 +35,7 @@ public class FTab<T extends WebMarkupContainer> extends AbstractTab {
 
     @Override
     public WebMarkupContainer getPanel(String id) {
-        return panelSupplier.get(id);
+        return panelSupplier == null ? null : panelSupplier.get(id);
     }
 
     @Override
