@@ -6,7 +6,7 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
 
 
-public class FLink<T> extends Link<T> {
+public class FLink<T> extends Link<T> implements IComponentWithVisibilityFunction<FLink<T>> {
 
     private Action clickAction;
     private SerializableBooleanSupplier visibilityFunction;
@@ -29,6 +29,7 @@ public class FLink<T> extends Link<T> {
         this.clickAction = clickAction;
     }
 
+    @Override
     public FLink<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;

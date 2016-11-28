@@ -6,7 +6,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxCheckBox;
 import org.apache.wicket.model.IModel;
 
-public class FAjaxCheckBox extends AjaxCheckBox {
+public class FAjaxCheckBox extends AjaxCheckBox implements IComponentWithVisibilityFunction<FAjaxCheckBox> {
 
     private AjaxAction updateAction;
     private SerializableBooleanSupplier visibilityFunction;
@@ -34,6 +34,7 @@ public class FAjaxCheckBox extends AjaxCheckBox {
         return this;
     }
 
+    @Override
     public FAjaxCheckBox setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;

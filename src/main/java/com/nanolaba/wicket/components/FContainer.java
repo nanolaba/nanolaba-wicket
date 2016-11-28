@@ -4,7 +4,7 @@ import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-public class FContainer extends WebMarkupContainer {
+public class FContainer extends WebMarkupContainer implements IComponentWithVisibilityFunction<FContainer> {
 
     private SerializableBooleanSupplier visibilityFunction;
 
@@ -26,6 +26,7 @@ public class FContainer extends WebMarkupContainer {
         setRenderBodyOnly(renderBodyOnly);
     }
 
+    @Override
     public FContainer setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;

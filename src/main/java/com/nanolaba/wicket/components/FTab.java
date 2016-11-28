@@ -9,7 +9,7 @@ import org.apache.wicket.model.Model;
 import java.io.Serializable;
 
 
-public class FTab<T extends WebMarkupContainer> extends AbstractTab {
+public class FTab<T extends WebMarkupContainer> extends AbstractTab implements IComponentWithVisibilityFunction<FTab<T>> {
 
     private PanelSupplier<T> panelSupplier;
     private SerializableBooleanSupplier visibilityFunction;
@@ -28,6 +28,7 @@ public class FTab<T extends WebMarkupContainer> extends AbstractTab {
         return this;
     }
 
+    @Override
     public FTab<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;

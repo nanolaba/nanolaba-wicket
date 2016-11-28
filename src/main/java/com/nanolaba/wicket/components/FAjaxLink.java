@@ -7,7 +7,7 @@ import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.model.IModel;
 
 
-public class FAjaxLink<T> extends AjaxLink<T> {
+public class FAjaxLink<T> extends AjaxLink<T> implements IComponentWithVisibilityFunction<FAjaxLink<T>> {
 
     private AjaxAction clickAction;
     private SerializableBooleanSupplier visibilityFunction;
@@ -35,6 +35,7 @@ public class FAjaxLink<T> extends AjaxLink<T> {
         return this;
     }
 
+    @Override
     public FAjaxLink<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;

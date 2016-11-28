@@ -6,7 +6,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.model.IModel;
 
-public class FSubmitLink extends SubmitLink {
+public class FSubmitLink extends SubmitLink implements IComponentWithVisibilityFunction<FSubmitLink> {
 
     private Action submitAction;
     private Action afterSubmitAction;
@@ -45,6 +45,7 @@ public class FSubmitLink extends SubmitLink {
         return this;
     }
 
+    @Override
     public FSubmitLink setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;

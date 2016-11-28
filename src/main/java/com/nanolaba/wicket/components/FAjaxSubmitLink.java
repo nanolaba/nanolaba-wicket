@@ -6,7 +6,7 @@ import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.form.Form;
 
-public class FAjaxSubmitLink extends AjaxSubmitLink {
+public class FAjaxSubmitLink extends AjaxSubmitLink implements IComponentWithVisibilityFunction<FAjaxSubmitLink> {
 
     private FormAjaxAction submitAction;
     private FormAjaxAction afterSubmitAction;
@@ -36,6 +36,7 @@ public class FAjaxSubmitLink extends AjaxSubmitLink {
         return this;
     }
 
+    @Override
     public FAjaxSubmitLink setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;
