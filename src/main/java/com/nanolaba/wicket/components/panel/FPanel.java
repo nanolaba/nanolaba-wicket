@@ -5,7 +5,7 @@ import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
-public class FPanel<T> extends GenericPanel implements IComponentWithVisibilityFunction<FPanel> {
+public class FPanel<T> extends GenericPanel<T> implements IComponentWithVisibilityFunction<FPanel> {
 
     private SerializableBooleanSupplier visibilityFunction;
 
