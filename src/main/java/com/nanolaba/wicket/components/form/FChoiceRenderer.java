@@ -44,6 +44,10 @@ public class FChoiceRenderer<T> implements IChoiceRenderer<T> {
             return "";
         }
 
+        if (object.getClass().isEnum()) {
+            return ((Enum) object).name();
+        }
+
         return idFunction == null ? Integer.toString(index) : idFunction.apply(object);
     }
 
