@@ -8,6 +8,10 @@ public class FContainer extends WebMarkupContainer implements IComponentWithVisi
 
     private SerializableBooleanSupplier visibilityFunction;
 
+    public FContainer(String id) {
+        super(id);
+    }
+
     public FContainer(String id, SerializableBooleanSupplier visibilityFunction, boolean renderBodyOnly) {
         this(id, null, visibilityFunction, renderBodyOnly);
     }
