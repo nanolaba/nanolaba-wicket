@@ -4,7 +4,7 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-wicket</artifactId>
     <name>nanolaba-wicket</name>
-    <version>0.0.21</version>
+    <version>0.0.22</version>
     <packaging>jar</packaging>
 
     <properties>

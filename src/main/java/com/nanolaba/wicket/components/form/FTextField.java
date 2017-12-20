@@ -5,7 +5,7 @@ import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 
-public class FTextField extends TextField implements IComponentWithVisibilityFunction {
+public class FTextField<T> extends TextField<T> implements IComponentWithVisibilityFunction {
 
     private SerializableBooleanSupplier visibilityFunction;
 
@@ -13,15 +13,15 @@ public class FTextField extends TextField implements IComponentWithVisibilityFun
         super(id);
     }
 
-    public FTextField(String id, Class type) {
+    public FTextField(String id, Class<T> type) {
         super(id, type);
     }
 
-    public FTextField(String id, IModel model) {
+    public FTextField(String id, IModel<T> model) {
         super(id, model);
     }
 
-    public FTextField(String id, IModel model, Class type) {
+    public FTextField(String id, IModel<T> model, Class<T> type) {
         super(id, model, type);
     }
 
