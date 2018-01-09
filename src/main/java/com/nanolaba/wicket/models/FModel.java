@@ -9,17 +9,11 @@ import java.util.List;
 
 public class FModel<P> extends LoadableDetachableModel<P> {
 
-    private static final long serialVersionUID = 1118033010998850740L;
-
     private final SerializableSupplier<P> getter;
-    private List<IDetachable> objectForDetach = new ArrayList<>();
+    private final List<IDetachable> objectForDetach = new ArrayList<>();
 
     public FModel(SerializableSupplier<P> getter) {
         this.getter = getter;
-    }
-
-    public static <P> FModel<P> of(SerializableSupplier<P> getter) {
-        return new FModel<>(getter);
     }
 
     public static <P> FModel<P> of(IDetachable detachable, SerializableSupplier<P> getter) {
