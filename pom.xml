@@ -4,13 +4,14 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-wicket</artifactId>
     <name>nanolaba-wicket</name>
-    <version>0.0.22</version>
+    <version>0.1.0</version>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.global.server>github</github.global.server>
-        <wicket.version>7.4.0</wicket.version>
+        <wicket.version>8.0.0-M8</wicket.version>
+        <wicket-datetime.version>8.0.0-M7</wicket-datetime.version>
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -72,7 +73,7 @@
         <dependency>
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-datetime</artifactId>
-            <version>${wicket.version}</version>
+            <version>${wicket-datetime.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>

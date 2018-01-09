@@ -1,6 +1,6 @@
 package com.nanolaba.wicket.components;
 
-import com.nanolaba.wicket.interfaces.FormAjaxAction;
+import com.nanolaba.wicket.interfaces.AjaxAction;
 import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
@@ -8,9 +8,9 @@ import org.apache.wicket.markup.html.form.Form;
 
 public class FAjaxSubmitLink extends AjaxSubmitLink implements IComponentWithVisibilityFunction<FAjaxSubmitLink> {
 
-    private FormAjaxAction submitAction;
-    private FormAjaxAction afterSubmitAction;
-    private FormAjaxAction errorAction;
+    private AjaxAction submitAction;
+    private AjaxAction afterSubmitAction;
+    private AjaxAction errorAction;
     private SerializableBooleanSupplier visibilityFunction;
 
     public FAjaxSubmitLink(String id) {
@@ -21,17 +21,17 @@ public class FAjaxSubmitLink extends AjaxSubmitLink implements IComponentWithVis
         super(id, form);
     }
 
-    public FAjaxSubmitLink setSubmitAction(FormAjaxAction submitAction) {
+    public FAjaxSubmitLink setSubmitAction(AjaxAction submitAction) {
         this.submitAction = submitAction;
         return this;
     }
 
-    public FAjaxSubmitLink setAfterSubmitAction(FormAjaxAction afterSubmitAction) {
+    public FAjaxSubmitLink setAfterSubmitAction(AjaxAction afterSubmitAction) {
         this.afterSubmitAction = afterSubmitAction;
         return this;
     }
 
-    public FAjaxSubmitLink setErrorAction(FormAjaxAction errorAction) {
+    public FAjaxSubmitLink setErrorAction(AjaxAction errorAction) {
         this.errorAction = errorAction;
         return this;
     }
@@ -50,23 +50,23 @@ public class FAjaxSubmitLink extends AjaxSubmitLink implements IComponentWithVis
     }
 
     @Override
-    protected void onAfterSubmit(AjaxRequestTarget target, Form<?> form) {
+    protected void onAfterSubmit(AjaxRequestTarget target) {
         if (afterSubmitAction != null) {
-            afterSubmitAction.makeAction(target, form);
+            afterSubmitAction.makeAction(target);
         }
     }
 
     @Override
-    protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+    protected void onSubmit(AjaxRequestTarget target) {
         if (submitAction != null) {
-            submitAction.makeAction(target, form);
+            submitAction.makeAction(target);
         }
     }
 
     @Override
-    protected void onError(AjaxRequestTarget target, Form<?> form) {
+    protected void onError(AjaxRequestTarget target) {
         if (errorAction != null) {
-            errorAction.makeAction(target, form);
+            errorAction.makeAction(target);
         }
     }
 
