@@ -4,7 +4,7 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-wicket</artifactId>
     <name>nanolaba-wicket</name>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -12,6 +12,7 @@
         <github.global.server>github</github.global.server>
         <wicket.version>8.0.0-M8</wicket.version>
         <wicket-datetime.version>8.0.0-M7</wicket-datetime.version>
+        <wicket-jquery-ui.version>8.0.0-M8.1</wicket-jquery-ui.version>
         <junit.version>4.12</junit.version>
     </properties>
 
@@ -68,11 +69,6 @@
         </dependency>
         <dependency>
             <groupId>org.apache.wicket</groupId>
-            <artifactId>wicket-datetime</artifactId>
-            <version>${wicket-datetime.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-devutils</artifactId>
             <version>${wicket.version}</version>
         </dependency>
@@ -80,6 +76,16 @@
             <groupId>org.apache.wicket</groupId>
             <artifactId>wicket-objectsizeof-agent</artifactId>
             <version>${wicket.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wicket</groupId>
+            <artifactId>wicket-datetime</artifactId>
+            <version>${wicket-datetime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.googlecode.wicket-jquery-ui</groupId>
+            <artifactId>wicket-jquery-ui</artifactId>
+            <version>${wicket-jquery-ui.version}</version>
         </dependency>
 
     </dependencies>
