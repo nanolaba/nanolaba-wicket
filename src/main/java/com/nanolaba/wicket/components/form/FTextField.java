@@ -36,5 +36,6 @@ public class FTextField<T> extends TextField<T> implements IComponentWithVisibil
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 }

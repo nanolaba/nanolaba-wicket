@@ -56,6 +56,7 @@ public class FSubmitLink extends SubmitLink implements IComponentWithVisibilityF
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 
     @Override

@@ -47,6 +47,7 @@ public class FAjaxSubmitLink extends AjaxSubmitLink implements IComponentWithVis
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 
     @Override

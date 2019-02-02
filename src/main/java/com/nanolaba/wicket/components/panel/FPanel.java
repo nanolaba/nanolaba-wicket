@@ -28,5 +28,6 @@ public class FPanel<T> extends GenericPanel<T> implements IComponentWithVisibili
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 }

@@ -45,6 +45,7 @@ public class FLink<T> extends Link<T> implements IComponentWithVisibilityFunctio
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 
     @Override

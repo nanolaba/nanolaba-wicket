@@ -46,6 +46,7 @@ public class FAjaxLink<T> extends AjaxLink<T> implements IComponentWithVisibilit
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 
     @Override

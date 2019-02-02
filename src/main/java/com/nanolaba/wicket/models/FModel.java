@@ -21,9 +21,11 @@ public class FModel<P> extends LoadableDetachableModel<P> {
     }
 
     public FModel<P> addDetachable(IDetachable... detachables) {
-        if (detachables != null) for (IDetachable detachable : detachables) {
-            if (detachable != null) {
-                objectForDetach.add(detachable);
+        if (detachables != null) {
+            for (IDetachable detachable : detachables) {
+                if (detachable != null) {
+                    objectForDetach.add(detachable);
+                }
             }
         }
 

@@ -6,7 +6,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
 
 
-public class FForm extends Form implements IComponentWithVisibilityFunction<FForm> {
+public class FForm<T> extends Form<T> implements IComponentWithVisibilityFunction<FForm<T>> {
 
     private Action submitAction;
     private Action errorAction;
@@ -16,7 +16,7 @@ public class FForm extends Form implements IComponentWithVisibilityFunction<FFor
         super(id);
     }
 
-    public FForm(String id, IModel model) {
+    public FForm(String id, IModel<T> model) {
         super(id, model);
     }
 
@@ -26,17 +26,17 @@ public class FForm extends Form implements IComponentWithVisibilityFunction<FFor
     }
 
     @Override
-    public FForm setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
+    public FForm<T> setVisibilityFunction(SerializableBooleanSupplier visibilityFunction) {
         this.visibilityFunction = visibilityFunction;
         return this;
     }
 
-    public FForm setSubmitAction(Action submitAction) {
+    public FForm<T> setSubmitAction(Action submitAction) {
         this.submitAction = submitAction;
         return this;
     }
 
-    public FForm setErrorAction(Action errorAction) {
+    public FForm<T> setErrorAction(Action errorAction) {
         this.errorAction = errorAction;
         return this;
     }
@@ -53,6 +53,7 @@ public class FForm extends Form implements IComponentWithVisibilityFunction<FFor
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 
     @Override

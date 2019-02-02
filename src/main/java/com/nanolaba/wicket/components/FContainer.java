@@ -41,5 +41,6 @@ public class FContainer extends WebMarkupContainer implements IComponentWithVisi
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 }

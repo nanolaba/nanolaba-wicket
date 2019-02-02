@@ -34,6 +34,7 @@ public class FLabel extends Label implements IComponentWithVisibilityFunction<FL
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 }
 
