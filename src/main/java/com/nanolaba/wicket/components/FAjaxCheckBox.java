@@ -45,6 +45,7 @@ public class FAjaxCheckBox extends AjaxCheckBox implements IComponentWithVisibil
         if (visibilityFunction != null) {
             setVisible(visibilityFunction.getAsBoolean());
         }
+        super.onConfigure();
     }
 
     @Override
