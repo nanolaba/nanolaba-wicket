@@ -50,6 +50,10 @@ public class FPanel<T> extends GenericPanel<T> implements IComponentWithVisibili
     @Override
     public void detachModels() {
         super.detachModels();
-        attachedModels.forEach(e -> e.detach());
+        attachedModels.forEach(e -> {
+            if (e != null) {
+                e.detach();
+            }
+        });
     }
 }
