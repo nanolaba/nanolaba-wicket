@@ -5,9 +5,14 @@ import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class FPanel<T> extends GenericPanel<T> implements IComponentWithVisibilityFunction<FPanel> {
 
     private SerializableBooleanSupplier visibilityFunction;
+    private Set<IModel> attachedModels = new HashSet<>();
 
     public FPanel(String id) {
         super(id);
@@ -29,5 +34,22 @@ public class FPanel<T> extends GenericPanel<T> implements IComponentWithVisibili
             setVisible(visibilityFunction.getAsBoolean());
         }
         super.onConfigure();
+    }
+
+    public <TT> IModel<TT> attachModel(IModel<TT> model) {
+        attachedModels.add(model);
+        return model;
+    }
+
+    public void attachModels(IModel... models) {
+        if (models != null) {
+            attachedModels.addAll(Arrays.asList(models));
+        }
+    }
+
+    @Override
+    public void detachModels() {
+        super.detachModels();
+        attachedModels.forEach(e -> e.detach());
     }
 }
