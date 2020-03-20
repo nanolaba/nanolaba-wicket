@@ -4,13 +4,13 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-wicket</artifactId>
     <name>nanolaba-wicket</name>
-    <version>0.2.1</version>
+    <version>0.2.2</version>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.global.server>github</github.global.server>
-        <wicket.version>8.7.0</wicket.version>
+        <wicket.version>9.0.0-M4</wicket.version>
         <wicket-datetime.version>8.0.0-M7</wicket-datetime.version>
         <wicket-jquery-ui.version>8.6.0</wicket-jquery-ui.version>
         <junit.version>4.12</junit.version>
@@ -104,8 +104,8 @@
                 <version>3.1</version>
                 <configuration>
                     <compilerArgument>-parameters</compilerArgument>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>11</source>
+                    <target>11</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
