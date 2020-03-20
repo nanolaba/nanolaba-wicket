@@ -1,5 +1,7 @@
 package com.nanolaba.wicket.util;
 
+import org.apache.wicket.extensions.markup.html.repeater.tree.AbstractTree;
+import org.apache.wicket.extensions.markup.html.repeater.tree.ITreeProvider;
 import org.apache.wicket.model.IDetachable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -8,30 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Field;
-import java.util.Map;
+import java.util.*;
 
-public interface IWicketUtils {
+public class WicketUtils {
 
-    static HttpServletResponse getHttpServletResponse() {
-        return (HttpServletResponse) RequestCycle.get().getResponse().getContainerResponse();
+    public static <T> T get(IModel<T> model) {
+        return get(model, null);
     }
 
-    static HttpServletRequest getHttpServletRequest() {
-        return (HttpServletRequest) RequestCycle.get().getRequest().getContainerRequest();
-    }
-
-    static HttpSession getHttpSession() {
-        return ((HttpServletRequest) RequestCycle.get().getRequest().getContainerRequest()).getSession(true);
-    }
-
-    static void sendPermanentRedirect(String url) {
-        HttpServletResponse response = getHttpServletResponse();
-        response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
-        response.setHeader("Location", url);
-    }
-
-
-    static void detachFields(Object... objects) {
+    public static void detachFields(Object... objects) {
         try {
             for (Object oo : objects) {
                 for (Field field : oo.getClass().getDeclaredFields()) {
@@ -60,7 +47,8 @@ public interface IWicketUtils {
         }
     }
 
-    static void detach(IDetachable... models) {
+
+    public static void detach(IDetachable... models) {
         if (models != null) {
             for (IDetachable model : models) {
                 if (model != null) {
@@ -70,7 +58,7 @@ public interface IWicketUtils {
         }
     }
 
-    static void detach(Iterable<? extends IDetachable> models) {
+    public static void detach(Iterable<? extends IDetachable> models) {
         if (models != null) {
             for (IDetachable model : models) {
                 if (model != null) {
@@ -80,15 +68,47 @@ public interface IWicketUtils {
         }
     }
 
-    static <T> T get(IModel<T> model) {
-        return get(model, null);
-    }
-
-    static <T> T get(IModel<T> model, T defaultValue) {
+    public static <T> T get(IModel<T> model, T defaultValue) {
         if (model == null) {
             return defaultValue;
         }
         T object = model.getObject();
         return object == null ? defaultValue : object;
+    }
+
+    public static <T> void expandTree(AbstractTree<T> tree) {
+        tree.getModelObject().addAll(toCollection(tree.getProvider(), tree.getProvider().getRoots()));
+    }
+
+    public static <T> void expandTree(AbstractTree<T> tree, Object node) {
+        tree.getModelObject().addAll(toCollection(tree.getProvider(), List.of(node).iterator()));
+    }
+
+    private static Collection toCollection(ITreeProvider provider, Iterator iterator) {
+        Collection<Object> res = new ArrayList<>();
+        while (iterator.hasNext()) {
+            Object next = iterator.next();
+            res.add(next);
+            res.addAll(toCollection(provider, provider.getChildren(next)));
+        }
+        return res;
+    }
+
+    public static HttpServletResponse getHttpServletResponse() {
+        return (HttpServletResponse) RequestCycle.get().getResponse().getContainerResponse();
+    }
+
+    public static HttpServletRequest getHttpServletRequest() {
+        return (HttpServletRequest) RequestCycle.get().getRequest().getContainerRequest();
+    }
+
+    public static HttpSession getHttpSession() {
+        return ((HttpServletRequest) RequestCycle.get().getRequest().getContainerRequest()).getSession(true);
+    }
+
+    public static void sendPermanentRedirect(String url) {
+        HttpServletResponse response = getHttpServletResponse();
+        response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
+        response.setHeader("Location", url);
     }
 }
