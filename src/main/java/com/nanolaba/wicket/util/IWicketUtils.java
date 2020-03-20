@@ -12,26 +12,26 @@ import java.util.Map;
 
 public interface IWicketUtils {
 
-    default HttpServletResponse getHttpServletResponse() {
+    static HttpServletResponse getHttpServletResponse() {
         return (HttpServletResponse) RequestCycle.get().getResponse().getContainerResponse();
     }
 
-    default HttpServletRequest getHttpServletRequest() {
+    static HttpServletRequest getHttpServletRequest() {
         return (HttpServletRequest) RequestCycle.get().getRequest().getContainerRequest();
     }
 
-    default HttpSession getHttpSession() {
+    static HttpSession getHttpSession() {
         return ((HttpServletRequest) RequestCycle.get().getRequest().getContainerRequest()).getSession(true);
     }
 
-    default void sendPermanentRedirect(String url) {
+    static void sendPermanentRedirect(String url) {
         HttpServletResponse response = getHttpServletResponse();
         response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
         response.setHeader("Location", url);
     }
 
 
-    default void detachFields(Object... objects) {
+    static void detachFields(Object... objects) {
         try {
             for (Object oo : objects) {
                 for (Field field : oo.getClass().getDeclaredFields()) {
@@ -60,7 +60,7 @@ public interface IWicketUtils {
         }
     }
 
-    default void detach(IDetachable... models) {
+    static void detach(IDetachable... models) {
         if (models != null) {
             for (IDetachable model : models) {
                 if (model != null) {
@@ -70,7 +70,7 @@ public interface IWicketUtils {
         }
     }
 
-    default void detach(Iterable<? extends IDetachable> models) {
+    static void detach(Iterable<? extends IDetachable> models) {
         if (models != null) {
             for (IDetachable model : models) {
                 if (model != null) {
@@ -80,11 +80,11 @@ public interface IWicketUtils {
         }
     }
 
-    default <T> T get(IModel<T> model) {
+    static <T> T get(IModel<T> model) {
         return get(model, null);
     }
 
-    default <T> T get(IModel<T> model, T defaultValue) {
+    static <T> T get(IModel<T> model, T defaultValue) {
         if (model == null) {
             return defaultValue;
         }
