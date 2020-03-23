@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Field;
 import java.util.*;
+import java.util.function.Supplier;
 
 public class WicketUtils {
 
@@ -110,5 +111,20 @@ public class WicketUtils {
         HttpServletResponse response = getHttpServletResponse();
         response.setStatus(HttpServletResponse.SC_MOVED_PERMANENTLY);
         response.setHeader("Location", url);
+    }
+
+
+    public static <T> T getRequestAttribute(String name, Supplier<T> supplier) {
+        HttpServletRequest request = getHttpServletRequest();
+        T value = (T) request.getAttribute(name);
+        if (value == null) {
+            synchronized (request) {
+                if (request.getAttribute(name) == null) {
+                    value = supplier.get();
+                    request.setAttribute(name, value);
+                }
+            }
+        }
+        return value;
     }
 }
