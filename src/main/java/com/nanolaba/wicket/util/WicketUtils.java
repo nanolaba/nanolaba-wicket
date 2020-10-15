@@ -1,7 +1,12 @@
 package com.nanolaba.wicket.util;
 
+import org.apache.wicket.Component;
+import org.apache.wicket.core.request.handler.IPartialPageRequestHandler;
+import org.apache.wicket.event.IEvent;
 import org.apache.wicket.extensions.markup.html.repeater.tree.AbstractTree;
 import org.apache.wicket.extensions.markup.html.repeater.tree.ITreeProvider;
+import org.apache.wicket.markup.html.form.FormComponent;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.IDetachable;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.cycle.RequestCycle;
@@ -126,5 +131,24 @@ public class WicketUtils {
             }
         }
         return value;
+    }
+
+    public static <T> T getCurrentFieldValue(FormComponent<T> component) {
+        if (component != null) {
+            T convertedInput = component.getConvertedInput();
+            return convertedInput != null ? convertedInput : component.getModelObject();
+        }
+
+        return null;
+    }
+
+    public static void refreshOnFeedbackUpdate(IEvent<?> event, Component component) {
+        Object payload = event.getPayload();
+        if (payload instanceof IPartialPageRequestHandler) {
+            IPartialPageRequestHandler target = (IPartialPageRequestHandler) payload;
+            if (target.getComponents().stream().anyMatch(e -> e instanceof FeedbackPanel)) {
+                target.add(component);
+            }
+        }
     }
 }
