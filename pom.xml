@@ -4,13 +4,13 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-wicket</artifactId>
     <name>nanolaba-wicket</name>
-    <version>0.2.13</version>
+    <version>0.2.14</version>
     <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <github.global.server>github</github.global.server>
-        <wicket.version>8.10.0</wicket.version>
+        <wicket.version>8.11.0</wicket.version>
         <wicket-datetime.version>${wicket.version}</wicket-datetime.version>
         <wicket-jquery-ui.version>8.10.0</wicket-jquery-ui.version>
         <junit.version>4.12</junit.version>
@@ -130,7 +130,7 @@
             <plugin>
                 <groupId>com.github.github</groupId>
                 <artifactId>site-maven-plugin</artifactId>
-                <version>0.10</version>
+                <version>0.12</version>
                 <configuration>
                     <message>Maven artifacts for ${project.groupId} ${project.artifactId} ${project.version}</message>
                     <noJekyll>true</noJekyll>
