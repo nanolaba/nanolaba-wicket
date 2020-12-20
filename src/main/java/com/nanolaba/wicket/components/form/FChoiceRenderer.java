@@ -18,6 +18,11 @@ public class FChoiceRenderer<T> implements IChoiceRenderer<T> {
         this.displayValueFunction = displayValueFunction;
     }
 
+    public FChoiceRenderer(SerializableFunction<T, Object> displayValueFunction, SerializableFunction<T, String> idFunction) {
+        this.displayValueFunction = displayValueFunction;
+        this.idFunction = idFunction;
+    }
+
     public FChoiceRenderer<T> setDisplayValueFunction(SerializableFunction<T, Object> displayValueFunction) {
         this.displayValueFunction = displayValueFunction;
         return this;
