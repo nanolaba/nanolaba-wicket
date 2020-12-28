@@ -1,10 +1,10 @@
 package com.nanolaba.wicket.components;
 
 import com.nanolaba.wicket.interfaces.AjaxAction;
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxCheckBox;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 public class FAjaxCheckBox extends AjaxCheckBox implements IComponentWithVisibilityFunction<FAjaxCheckBox> {
 

@@ -1,9 +1,9 @@
 package com.nanolaba.wicket.components.basic;
 
 import com.nanolaba.wicket.components.IComponentWithVisibilityFunction;
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 import java.io.Serializable;
 

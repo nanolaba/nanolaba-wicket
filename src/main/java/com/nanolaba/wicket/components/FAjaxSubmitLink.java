@@ -1,10 +1,10 @@
 package com.nanolaba.wicket.components;
 
 import com.nanolaba.wicket.interfaces.AjaxAction;
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.form.AjaxSubmitLink;
 import org.apache.wicket.markup.html.form.Form;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 public class FAjaxSubmitLink extends AjaxSubmitLink implements IComponentWithVisibilityFunction<FAjaxSubmitLink> {
 

@@ -1,9 +1,9 @@
 package com.nanolaba.wicket.components.form;
 
 import com.nanolaba.wicket.components.IComponentWithVisibilityFunction;
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 public class FTextField<T> extends TextField<T> implements IComponentWithVisibilityFunction {
 

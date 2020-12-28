@@ -1,9 +1,9 @@
 package com.nanolaba.wicket.components.panel;
 
 import com.nanolaba.wicket.components.IComponentWithVisibilityFunction;
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.panel.GenericPanel;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 import java.util.Arrays;
 import java.util.HashSet;

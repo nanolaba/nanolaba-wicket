@@ -1,9 +1,9 @@
 package com.nanolaba.wicket.components;
 
 import com.nanolaba.wicket.interfaces.Action;
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 
 public class FForm<T> extends Form<T> implements IComponentWithVisibilityFunction<FForm<T>> {

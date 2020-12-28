@@ -1,8 +1,8 @@
 package com.nanolaba.wicket.components;
 
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 public class FContainer extends WebMarkupContainer implements IComponentWithVisibilityFunction<FContainer> {
 

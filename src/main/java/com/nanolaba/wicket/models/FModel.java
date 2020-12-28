@@ -1,8 +1,8 @@
 package com.nanolaba.wicket.models;
 
-import com.nanolaba.wicket.interfaces.SerializableSupplier;
 import org.apache.wicket.model.IDetachable;
 import org.apache.wicket.model.LoadableDetachableModel;
+import org.danekja.java.util.function.serializable.SerializableSupplier;
 
 import java.util.ArrayList;
 import java.util.List;

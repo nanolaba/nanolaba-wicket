@@ -1,6 +1,6 @@
 package com.nanolaba.wicket.components;
 
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 public interface IComponentWithVisibilityFunction<T> {
 

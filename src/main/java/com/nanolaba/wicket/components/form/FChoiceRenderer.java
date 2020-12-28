@@ -1,8 +1,8 @@
 package com.nanolaba.wicket.components.form;
 
-import com.nanolaba.wicket.interfaces.SerializableFunction;
 import org.apache.wicket.markup.html.form.IChoiceRenderer;
 import org.apache.wicket.model.IModel;
+import org.danekja.java.util.function.serializable.SerializableFunction;
 
 import java.util.List;
 

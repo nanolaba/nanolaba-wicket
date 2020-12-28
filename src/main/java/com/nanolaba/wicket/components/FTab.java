@@ -1,10 +1,10 @@
 package com.nanolaba.wicket.components;
 
-import com.nanolaba.wicket.interfaces.SerializableBooleanSupplier;
 import org.apache.wicket.extensions.markup.html.tabs.AbstractTab;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.danekja.java.util.function.serializable.SerializableBooleanSupplier;
 
 import java.io.Serializable;
 
